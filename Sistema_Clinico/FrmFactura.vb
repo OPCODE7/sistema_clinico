@@ -302,7 +302,6 @@ Public Class FrmFactura
     End Sub
 
     Private Sub BtnFinalizar_Click(sender As Object, e As EventArgs) Handles BtnFinalizar.Click
-
         For Each item As DataGridViewRow In DgvDetalleFactura.Rows
             Try
                 con.Open()
@@ -335,6 +334,9 @@ Public Class FrmFactura
             TxtId.Text = ObtenerSiguienteID()
 
         Next
+
+        DgvDetalleFactura.Rows.Clear()
+
 
     End Sub
 

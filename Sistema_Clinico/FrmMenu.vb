@@ -107,7 +107,7 @@
     End Sub
 
     Private Sub Reportes_Click(sender As Object, e As EventArgs) Handles Reportes.Click
-
+        FrmVerReportes.ShowDialog()
     End Sub
 
     Private Sub Mantenimiento_MouseEnter(sender As Object, e As EventArgs) Handles Mantenimiento.MouseEnter
@@ -208,7 +208,6 @@
             ' Ruta del archivo del manual de usuario
             Dim pathApp As String = Application.StartupPath.ToString()
             Dim pathFile As String = pathApp.Substring(0, pathApp.Length - 9) + "ManualdeUsuario_SistemaClinico.pdf"
-            MessageBox.Show(pathFile)
             ' Abrir el manual de usuario utilizando el programa predeterminado
             Process.Start(pathFile)
         Catch ex As Exception

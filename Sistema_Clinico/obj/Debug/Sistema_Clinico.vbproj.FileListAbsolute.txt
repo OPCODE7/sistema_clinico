@@ -51,7 +51,6 @@ C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmMedicos.resources
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmMenu.resources
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmNuevoRegistro.resources
-C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmPrescripcion.resources
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmProveedores.resources
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmRol.resources
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmServicioClinico.resources
@@ -118,3 +117,11 @@ C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\bin\Debug
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.vbproj.CopyComplete
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmReporteCita.resources
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmVerReportes.resources
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmInventarioMedicamento.resources
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmReporteEquipoMedico.resources
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmReporteHistorialClinico.resources
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmReportePacientes.resources
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmReportePrescripcionMedica.resources
+C:\Users\Darlin\Downloads\PROYECTO_IMP\Sistema_Clinico\Sistema_Clinico\obj\Debug\Sistema_Clinico.FrmVerPacientes.resources

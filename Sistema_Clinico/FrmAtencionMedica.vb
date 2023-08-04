@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class FrmAtencionMedica
-    Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+    Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
     Dim con As New SqlClient.SqlConnection(My.Settings.SistemaClinico)
     Dim reader As SqlDataReader
     Dim recordset As DataTable
@@ -18,7 +18,6 @@ Public Class FrmAtencionMedica
         TxtEspecialidad.Enabled = True
         TxtDiagnostico.Enabled = True
         TxtTratamiento.Enabled = True
-        ListTratamiento.Enabled = True
         DateFechaRegistro.Enabled = True
     End Sub
 
@@ -40,7 +39,6 @@ Public Class FrmAtencionMedica
         TxtEspecialidad.Enabled = False
         TxtDiagnostico.Enabled = False
         TxtTratamiento.Enabled = False
-        ListTratamiento.Enabled = False
         DateFechaRegistro.Enabled = False
 
     End Sub
@@ -56,7 +54,6 @@ Public Class FrmAtencionMedica
         TxtEspecialidad.Clear()
         TxtDiagnostico.Clear()
         TxtTratamiento.Clear()
-        ListTratamiento.Items.Clear()
     End Sub
 
     Private Sub Buscar()
@@ -78,10 +75,6 @@ Public Class FrmAtencionMedica
             MessageBox.Show("Por favor, ingrese el diagnostico del paciente.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             TxtDiagnostico.Focus()
             isvalid = False
-        ElseIf ListTratamiento.Text.Trim().Length = 0 Then
-            MessageBox.Show("Por favor, ingrese el tratamiento del paciente.", "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ListTratamiento.Focus()
-            isvalid = False
         End If
         Return isvalid
     End Function
@@ -92,7 +85,7 @@ Public Class FrmAtencionMedica
         Using connection As New SqlConnection(connectionString)
             connection.Open()
 
-            Dim query As String = "SELECT ISNULL(MAX(IdHistorial), 0) + 1 FROM HistorialMedico"
+            Dim query As String = "SELECT ISNULL(MAX(IdHistorialClinico), 0) + 1 FROM HistorialMedico"
             Using command As New SqlCommand(query, connection)
                 siguienteID = Convert.ToInt32(command.ExecuteScalar())
             End Using
@@ -359,15 +352,8 @@ Public Class FrmAtencionMedica
     Private Sub ImagenBuscar_Click(sender As Object, e As EventArgs) Handles ImagenBuscar.Click
         con.Open()
 
-        Dim cmd As New SqlClient.SqlCommand("SELECT A.IdHistorial, A.IdPaciente, A.IdMedico, A.Diagnostico, A.Tratamiento, A.FechaRegistro,
-                                            B.IdPaciente, B.NombrePaciente, B.ApellidoPaciente, B.Identidad as IdentidadPaciente,
-                                            C.IdMedico, C.NombreMedico, C.ApellidoMedico, C.IdEspecialidad, C.Identidad as IdentidadMedico,
-                                            E.Especialidad
-                                            FROM HistorialMedico A
-                                                                    INNER JOIN Paciente B ON A.IdPaciente = B.IdPaciente
-                                                                    INNER JOIN Medico C ON A.IdMedico = C.IdMedico
-                                                                    INNER JOIN Especialidad E ON C.IdEspecialidad = E.IdEspecialidad
-                                            WHERE B.NombrePaciente = '" & TxtBuscar.Text & "'", con)
+        Dim cmd As New SqlClient.SqlCommand("SELECT A.IdHistorialClinico, A.IdPaciente, A.IdMedico, A.Diagnostico, A.Tratamiento, A.FechaRegistro,B.IdPaciente, B.NombrePaciente, B.ApellidoPaciente, B.Identidad as IdentidadPaciente,C.IdMedico, C.NombreMedico, C.ApellidoMedico, C.IdEspecialidad, C.Identidad as IdentidadMedico,E.Especialidad FROM HistorialMedico A INNER JOIN Paciente B ON A.IdPaciente = B.IdPaciente INNER JOIN Medico C ON A.IdMedico = C.IdMedico INNER JOIN Especialidad E ON C.IdEspecialidad = E.IdEspecialidad
+          WHERE B.NombrePaciente = '" & TxtBuscar.Text & "'", con)
 
         reader = cmd.ExecuteReader
 
@@ -381,7 +367,7 @@ Public Class FrmAtencionMedica
             BtnEliminar.Enabled = True
             BtnAgregar.Visible = True
 
-            TxtId.Text = reader("IdHistorial").ToString()
+            TxtId.Text = reader("IdHistorialClinico").ToString()
             TxtIdPa.Text = reader("IdPaciente").ToString()
             TxtPaciente.Text = reader("NombrePaciente").ToString()
             TxtApellidoPa.Text = reader("ApellidoPaciente").ToString()
@@ -390,11 +376,11 @@ Public Class FrmAtencionMedica
             TxtIdMe.Text = reader("IdMedico").ToString()
             TxtMedico.Text = reader("NombreMedico").ToString()
             TxtApellidoMe.Text = reader("ApellidoMedico").ToString()
-            TxtIdentidad.Text = reader("IdentidadMedico").ToString()
+            TxtIdentidadMe.Text = reader("IdentidadMedico").ToString()
             TxtEspecialidad.Text = reader("Especialidad").ToString()
 
             TxtDiagnostico.Text = reader("Diagnostico").ToString()
-            ListTratamiento.Text = reader("Tratamiento").ToString()
+            TxtTratamiento.Text = reader("Tratamiento").ToString()
             DateFechaRegistro.Value = DateTime.Parse(reader("FechaRegistro").ToString())
             DateFechaRegistro.Format = DateTimePickerFormat.Custom
             DateFechaRegistro.CustomFormat = "dd/MM/yyyy"
@@ -431,8 +417,7 @@ Public Class FrmAtencionMedica
             cmd.Parameters.AddWithValue("@IdPaciente", TxtIdPa.Text)
             cmd.Parameters.AddWithValue("@IdMedico", TxtIdMe.Text)
             cmd.Parameters.AddWithValue("@Diagnostico", TxtDiagnostico.Text)
-            ' Cambia ListTratamiento.Text por ListTratamientos
-            cmd.Parameters.AddWithValue("@Tratamiento", GetTratamientosString())
+            cmd.Parameters.AddWithValue("@Tratamiento", TxtTratamiento.Text)
             cmd.Parameters.AddWithValue("@FechaRegistro", DateFechaRegistro.Value)
             cmd.Parameters.AddWithValue("@FechaModificacion", DateFechaRegistro.Value)
 
@@ -456,9 +441,6 @@ Public Class FrmAtencionMedica
         End If
     End Sub
 
-    Private Function GetTratamientosString() As String
-        Return String.Join(",", ListTratamientos)
-    End Function
 
     Private Sub BtnHistorial_Click(sender As Object, e As EventArgs) Handles BtnHistorial.Click
         ClearForm()
@@ -485,15 +467,14 @@ Public Class FrmAtencionMedica
             con.Open()
 
             Dim cmd As New SqlClient.SqlCommand("Update HistorialMedico
-	                                             set IdHistorial = @IdHistorial, IdPaciente = @IdPaciente, IdMedico = @IdMedico, 
-	                                             Diagnostico = @Diagnostico, Tratamiento = @Tratamiento, FechaModificacion = GETDATE()
-	                                             where IdHistorial = @IdHistorial", con)
-
+	                  set IdPaciente = @IdPaciente, IdMedico = @IdMedico, 
+	                                             Diagnostico = @Diagnostico, Tratamiento = @Tratamiento, FechaModificacionRegistro = GETDATE()
+	                                             where IdHistorialClinico = @IdHistorial", con)
             cmd.Parameters.AddWithValue("@IdHistorial", TxtId.Text)
             cmd.Parameters.AddWithValue("@IdPaciente", TxtIdPa.Text)
             cmd.Parameters.AddWithValue("@IdMedico", TxtIdMe.Text)
             cmd.Parameters.AddWithValue("@Diagnostico", TxtDiagnostico.Text)
-            cmd.Parameters.AddWithValue("@Tratamiento", ListTratamiento.Text)
+            cmd.Parameters.AddWithValue("@Tratamiento", TxtTratamiento.Text)
             cmd.Parameters.AddWithValue("@FechaModificacion", DateFechaRegistro.Value)
 
             Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
@@ -519,7 +500,7 @@ Public Class FrmAtencionMedica
 
         Dim cmd As New SqlClient.SqlCommand("DELETE 
                                              FROM HistorialMedico
-                                             WHERE IdHistorial = '" + TxtId.Text + "'", con)
+                                             WHERE IdHistorialClinico = '" + TxtId.Text + "'", con)
 
         Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
 
@@ -578,51 +559,14 @@ Public Class FrmAtencionMedica
         TxtTratamiento.AutoCompleteCustomSource = fuenteSugerencias
     End Sub
 
-    Private tratamientosSeleccionados As New List(Of String)()
 
-    Private Sub TxtTratamiento_KeyDown(sender As Object, e As KeyEventArgs) Handles TxtTratamiento.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            BuscarTratamiento_Click(sender, e)
-        End If
-    End Sub
-
-    Private Sub BuscarTratamiento_Click(sender As Object, e As EventArgs) Handles BuscarTratamiento.Click
-        con.Open()
-
-        Dim cmd As New SqlClient.SqlCommand("SELECT Medicamentos.NombreMedicamento
-                                         FROM Medicamentos
-                                         WHERE NombreMedicamento = '" & TxtTratamiento.Text & "'", con)
-
-        reader = cmd.ExecuteReader
-
-        If reader.Read Then
-            MessageBox.Show("Información encontrada")
-
-            ListTratamientos.Add(reader("NombreMedicamento").ToString())
-
-            ListTratamiento.Text = reader("NombreMedicamento").ToString()
-        Else
-            MessageBox.Show("No existe un registro con esos datos")
-        End If
-
-        con.Close()
-        cmd.Dispose()
-    End Sub
-
-    Private Sub ListTratamiento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListTratamiento.SelectedIndexChanged
-        'Dim selectedItem As String = ListTratamiento.SelectedItem.ToString()
-        'ListTratamiento.ClearSelected()
-    End Sub
 
     Private Sub BtnCita_Click(sender As Object, e As EventArgs) Handles BtnCita.Click
         Dim frmCitas As New FrmCitas()
         frmCitas.ShowDialog()
     End Sub
 
-    Private Sub BtnPrescripcion_Click(sender As Object, e As EventArgs) Handles BtnPrescripcion.Click
-        Dim frmPrescripcion As New FrmPrescripcion()
-        frmPrescripcion.ShowDialog()
-    End Sub
+
 
     'Sub LlenarGridAuto()
     '    Dim DT As DataTable

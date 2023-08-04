@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class FrmCitas
-    Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+    Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
     Dim con As New SqlClient.SqlConnection(My.Settings.SistemaClinico)
     Dim reader As SqlDataReader
     Dim recordset As DataTable
@@ -154,7 +154,7 @@ Public Class FrmCitas
     Private Sub ImagenBuscar_Click(sender As Object, e As EventArgs) Handles ImagenBuscar.Click
         con.Open()
 
-        Dim query As String = "SELECT A.IdHistorial, A.IdPaciente, A.IdMedico, B.IdPaciente, B.NombrePaciente, B.ApellidoPaciente, B.Identidad as IdentidadPaciente, C.IdMedico, C.NombreMedico, C.ApellidoMedico, C.IdEspecialidad, C.Identidad as IdentidadMedico, E.Especialidad " &
+        Dim query As String = "SELECT A.IdHistorialClinico, A.IdPaciente, A.IdMedico, B.IdPaciente, B.NombrePaciente, B.ApellidoPaciente, B.Identidad as IdentidadPaciente, C.IdMedico, C.NombreMedico, C.ApellidoMedico, C.IdEspecialidad, C.Identidad as IdentidadMedico, E.Especialidad " &
                               "FROM HistorialMedico A " &
                               "INNER JOIN Paciente B ON A.IdPaciente = B.IdPaciente " &
                               "INNER JOIN Medico C ON A.IdMedico = C.IdMedico " &
@@ -170,7 +170,7 @@ Public Class FrmCitas
                 MessageBox.Show("Información encontrada")
                 BtnAgregar.Enabled = True
 
-                TxtIdHistorial.Text = reader("IdHistorial").ToString()
+                TxtIdHistorial.Text = reader("IdHistorialClinico").ToString()
                 TxtIdPa.Text = reader("IdPaciente").ToString()
                 TxtPaciente.Text = reader("NombrePaciente").ToString()
                 TxtApellidoPa.Text = reader("ApellidoPaciente").ToString()

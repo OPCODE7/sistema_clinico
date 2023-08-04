@@ -70,6 +70,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -91,6 +92,36 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DtsCitaMedica.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtsCitaMedica.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DtsEquipoMedico.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtsEquipoMedico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DtsHistorialClinico.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtsHistorialClinico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DtsInventarioMedicamentos.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtsInventarioMedicamentos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DtsPacientes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtsPacientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DtsPrescripcionMedica.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DtsPrescripcionMedica.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +171,12 @@
     <Compile Include="FrmFactura.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmInventarioMedicamento.Designer.vb">
+      <DependentUpon>FrmInventarioMedicamento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventarioMedicamento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmLogin.Designer.vb">
       <DependentUpon>FrmLogin.vb</DependentUpon>
     </Compile>
@@ -176,16 +213,40 @@
     <Compile Include="FrmNuevoRegistro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPrescripcion.Designer.vb">
-      <DependentUpon>FrmPrescripcion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPrescripcion.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FrmProveedores.Designer.vb">
       <DependentUpon>FrmProveedores.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmProveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteCita.Designer.vb">
+      <DependentUpon>FrmReporteCita.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReporteCita.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteEquipoMedico.Designer.vb">
+      <DependentUpon>FrmReporteEquipoMedico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReporteEquipoMedico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteHistorialClinico.Designer.vb">
+      <DependentUpon>FrmReporteHistorialClinico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReporteHistorialClinico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportePacientes.Designer.vb">
+      <DependentUpon>FrmReportePacientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportePacientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportePrescripcionMedica.Designer.vb">
+      <DependentUpon>FrmReportePrescripcionMedica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportePrescripcionMedica.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmRol.Designer.vb">
@@ -216,6 +277,18 @@
       <DependentUpon>FrmUsuarios.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVerPacientes.Designer.vb">
+      <DependentUpon>FrmVerPacientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVerPacientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVerReportes.Designer.vb">
+      <DependentUpon>FrmVerReportes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVerReportes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -260,6 +333,9 @@
     <EmbeddedResource Include="FrmFactura.resx">
       <DependentUpon>FrmFactura.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventarioMedicamento.resx">
+      <DependentUpon>FrmInventarioMedicamento.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.vb</DependentUpon>
     </EmbeddedResource>
@@ -278,11 +354,23 @@
     <EmbeddedResource Include="FrmNuevoRegistro.resx">
       <DependentUpon>FrmNuevoRegistro.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrescripcion.resx">
-      <DependentUpon>FrmPrescripcion.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmProveedores.resx">
       <DependentUpon>FrmProveedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteCita.resx">
+      <DependentUpon>FrmReporteCita.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteEquipoMedico.resx">
+      <DependentUpon>FrmReporteEquipoMedico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteHistorialClinico.resx">
+      <DependentUpon>FrmReporteHistorialClinico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportePacientes.resx">
+      <DependentUpon>FrmReportePacientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportePrescripcionMedica.resx">
+      <DependentUpon>FrmReportePrescripcionMedica.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRol.resx">
       <DependentUpon>FrmRol.vb</DependentUpon>
@@ -299,14 +387,92 @@
     <EmbeddedResource Include="FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmVerPacientes.resx">
+      <DependentUpon>FrmVerPacientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVerReportes.resx">
+      <DependentUpon>FrmVerReportes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCitaMedica.rdlc" />
+    <EmbeddedResource Include="ReporteEquipoMedico.rdlc" />
+    <EmbeddedResource Include="ReporteHistorialClinico.rdlc" />
+    <EmbeddedResource Include="ReporteInventarioMedicamentos.rdlc" />
+    <EmbeddedResource Include="ReportePacientesAtendidos.rdlc" />
+    <EmbeddedResource Include="ReportePrescripcionMedica.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DtsCitaMedica.xsc">
+      <DependentUpon>DtsCitaMedica.xsd</DependentUpon>
+    </None>
+    <None Include="DtsCitaMedica.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DtsCitaMedica.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DtsCitaMedica.xss">
+      <DependentUpon>DtsCitaMedica.xsd</DependentUpon>
+    </None>
+    <None Include="DtsEquipoMedico.xsc">
+      <DependentUpon>DtsEquipoMedico.xsd</DependentUpon>
+    </None>
+    <None Include="DtsEquipoMedico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DtsEquipoMedico.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DtsEquipoMedico.xss">
+      <DependentUpon>DtsEquipoMedico.xsd</DependentUpon>
+    </None>
+    <None Include="DtsHistorialClinico.xsc">
+      <DependentUpon>DtsHistorialClinico.xsd</DependentUpon>
+    </None>
+    <None Include="DtsHistorialClinico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DtsHistorialClinico.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DtsHistorialClinico.xss">
+      <DependentUpon>DtsHistorialClinico.xsd</DependentUpon>
+    </None>
+    <None Include="DtsInventarioMedicamentos.xsc">
+      <DependentUpon>DtsInventarioMedicamentos.xsd</DependentUpon>
+    </None>
+    <None Include="DtsInventarioMedicamentos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DtsInventarioMedicamentos.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DtsInventarioMedicamentos.xss">
+      <DependentUpon>DtsInventarioMedicamentos.xsd</DependentUpon>
+    </None>
+    <None Include="DtsPacientes.xsc">
+      <DependentUpon>DtsPacientes.xsd</DependentUpon>
+    </None>
+    <None Include="DtsPacientes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DtsPacientes.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DtsPacientes.xss">
+      <DependentUpon>DtsPacientes.xsd</DependentUpon>
+    </None>
+    <None Include="DtsPrescripcionMedica.xsc">
+      <DependentUpon>DtsPrescripcionMedica.xsd</DependentUpon>
+    </None>
+    <None Include="DtsPrescripcionMedica.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DtsPrescripcionMedica.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DtsPrescripcionMedica.xss">
+      <DependentUpon>DtsPrescripcionMedica.xsd</DependentUpon>
+    </None>
     <None Include="ManualdeUsuario_SistemaClinico.pdf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

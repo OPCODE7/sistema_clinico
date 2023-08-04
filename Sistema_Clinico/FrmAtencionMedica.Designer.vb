@@ -40,8 +40,6 @@ Partial Class FrmAtencionMedica
         Me.TxtMedico = New System.Windows.Forms.TextBox()
         Me.TxtApellidoPa = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.ListTratamiento = New System.Windows.Forms.ListBox()
-        Me.BtnPrescripcion = New System.Windows.Forms.Button()
         Me.BtnCita = New System.Windows.Forms.Button()
         Me.TxtTratamiento = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -106,8 +104,6 @@ Partial Class FrmAtencionMedica
         Me.GroupAtencionMedica.Controls.Add(Me.TxtMedico)
         Me.GroupAtencionMedica.Controls.Add(Me.TxtApellidoPa)
         Me.GroupAtencionMedica.Controls.Add(Me.Label6)
-        Me.GroupAtencionMedica.Controls.Add(Me.ListTratamiento)
-        Me.GroupAtencionMedica.Controls.Add(Me.BtnPrescripcion)
         Me.GroupAtencionMedica.Controls.Add(Me.BtnCita)
         Me.GroupAtencionMedica.Controls.Add(Me.TxtTratamiento)
         Me.GroupAtencionMedica.Controls.Add(Me.Label3)
@@ -281,26 +277,6 @@ Partial Class FrmAtencionMedica
         Me.Label6.TabIndex = 81
         Me.Label6.Text = "Medico"
         '
-        'ListTratamiento
-        '
-        Me.ListTratamiento.FormattingEnabled = True
-        Me.ListTratamiento.ItemHeight = 20
-        Me.ListTratamiento.Location = New System.Drawing.Point(305, 395)
-        Me.ListTratamiento.Name = "ListTratamiento"
-        Me.ListTratamiento.Size = New System.Drawing.Size(275, 204)
-        Me.ListTratamiento.TabIndex = 80
-        '
-        'BtnPrescripcion
-        '
-        Me.BtnPrescripcion.BackColor = System.Drawing.Color.SteelBlue
-        Me.BtnPrescripcion.ForeColor = System.Drawing.SystemColors.Control
-        Me.BtnPrescripcion.Location = New System.Drawing.Point(614, 474)
-        Me.BtnPrescripcion.Name = "BtnPrescripcion"
-        Me.BtnPrescripcion.Size = New System.Drawing.Size(173, 48)
-        Me.BtnPrescripcion.TabIndex = 79
-        Me.BtnPrescripcion.Text = "Prescripción medica"
-        Me.BtnPrescripcion.UseVisualStyleBackColor = False
-        '
         'BtnCita
         '
         Me.BtnCita.BackColor = System.Drawing.Color.SteelBlue
@@ -318,7 +294,7 @@ Partial Class FrmAtencionMedica
         Me.TxtTratamiento.Location = New System.Drawing.Point(305, 347)
         Me.TxtTratamiento.Multiline = True
         Me.TxtTratamiento.Name = "TxtTratamiento"
-        Me.TxtTratamiento.Size = New System.Drawing.Size(239, 26)
+        Me.TxtTratamiento.Size = New System.Drawing.Size(239, 253)
         Me.TxtTratamiento.TabIndex = 77
         Me.ToolTip1.SetToolTip(Me.TxtTratamiento, "Ingresar nombre del medicamento")
         '
@@ -626,8 +602,6 @@ Partial Class FrmAtencionMedica
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents BtnCita As Button
-    Friend WithEvents ListTratamiento As ListBox
-    Friend WithEvents BtnPrescripcion As Button
     Friend WithEvents TxtEspecialidad As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents TxtApellidoMe As TextBox

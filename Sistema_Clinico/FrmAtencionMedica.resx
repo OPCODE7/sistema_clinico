@@ -121,7 +121,7 @@
   <data name="BuscarTratamiento.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        eQAADnkBYhTeRQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACOTSURBVHhe7d17
+        eAAADngBsFM8oQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACOTSURBVHhe7d17
         rK75WdbxxUxLmU5b2mkbkbZYIhiIoBjRgRIIWqwitYD4B1Es1lPVioeEQ4xN1QiaKhI0RSUQVKwWEgNI
         lFiIQ0vVHqYjlOIwoobagVZF0lNgWsZOve69n3fPs6/122uvw/t739/1e75X8pm0D9O91/3c717XTbtn
         5uRjH/sYAADYmOZDAAAwt+ZDAAAwt+ZDAAAwt+ZDAAAwt+ZDAAAwt+ZDAAAwt+ZDAAAwt+ZDAAAwt+ZD
@@ -300,6 +300,9 @@
         7V/B5e8/Xh792AAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
