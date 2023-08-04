@@ -46,7 +46,7 @@ Public Class FrmEquipoMedico
         recordset = New DataTable()
 
         Try
-            cmd = New SqlCommand("SELECT DISTINCT IdProveedor, NombreProveedor FROM Proveedor WHERE Categoria = 'Farmacéutica'", con)
+            cmd = New SqlCommand("SELECT DISTINCT IdProveedor, NombreProveedor FROM Proveedor WHERE Categoria = 'EquipoMedico'", con)
             con.Open()
 
             reader = cmd.ExecuteReader()

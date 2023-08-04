@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Text.RegularExpressions
 Public Class FrmFactura
     Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
     Dim con As New SqlClient.SqlConnection(My.Settings.SistemaClinico)
@@ -15,7 +16,6 @@ Public Class FrmFactura
     End Sub
 
     Private Sub StartForm()
-        BtnEliminar.Enabled = False
         TxtId.ReadOnly = True
         TxtId.Enabled = False
 
@@ -26,13 +26,15 @@ Public Class FrmFactura
 
     End Sub
     Private Sub ClearForm()
-        TxtIdPaciente.Clear()
         TxtPaciente.Clear()
+        TxtIdPaciente.Clear()
         TxtApellidoPa.Clear()
         TxtSubTotal.Clear()
         TxtTotal.Clear()
         TxtPrecio.Clear()
         TxtDescuento.Clear()
+        TxtIVA.Clear()
+        TxtCantidad.Clear()
         CbmDescuento.SelectedIndex = -1
         CbmMedicamentos.SelectedIndex = -1
     End Sub
@@ -181,10 +183,34 @@ Public Class FrmFactura
         FillDescuento()
         FillMedicamento()
         Dim siguienteID As Integer = ObtenerSiguienteID()
+
         TxtId.Text = siguienteID.ToString()
         TxtId.ReadOnly = True
         TxtId.Enabled = False
-        BtnEliminar.Enabled = False
+        saveFactura()
+    End Sub
+
+    Private Sub saveFactura()
+        Try
+            con.Open()
+
+            Dim cmd As New SqlCommand("sp_InsertarFactura", con)
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.AddWithValue("@NumFactura", ObtenerSiguienteID())
+
+            Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+
+            If rowsAffected > 0 Then
+                MessageBox.Show("Nueva Factura en proceso!")
+            Else
+                MessageBox.Show("El registro no se pudo guardar correctamente, algo falló")
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al guardar los datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            con.Close()
+        End Try
     End Sub
 
     Private Function Validator() As Boolean
@@ -219,7 +245,6 @@ Public Class FrmFactura
         If Validator() Then
 
             DgvDetalleFactura.Rows.Add(TxtId.Text.ToString(), CbmMedicamentos.SelectedValue.ToString(), CbmMedicamentos.Text.ToString(), TxtIVA.Text.ToString(), TxtTotal.Text.ToString())
-            ClearForm()
         End If
     End Sub
 
@@ -279,18 +304,17 @@ Public Class FrmFactura
     Private Sub BtnFinalizar_Click(sender As Object, e As EventArgs) Handles BtnFinalizar.Click
 
         For Each item As DataGridViewRow In DgvDetalleFactura.Rows
-            MessageBox.Show(item.Cells("Pago").Value.ToString())
             Try
                 con.Open()
 
-                Dim cmd As New SqlCommand("sp_Paciente", con)
+                Dim cmd As New SqlCommand("sp_DetalleFactura", con)
                 cmd.CommandType = CommandType.StoredProcedure
 
                 cmd.Parameters.AddWithValue("@Identificador", 1)
                 cmd.Parameters.AddWithValue("@NumFactura", TxtId.Text.ToString())
                 cmd.Parameters.AddWithValue("@CodigoMedicamento", item.Cells("Codigo").Value.ToString())
-                cmd.Parameters.AddWithValue("@IVA", item.Cells("IVA").Value.ToString())
-                cmd.Parameters.AddWithValue("@Total", item.Cells("Total").Value.ToString())
+                cmd.Parameters.AddWithValue("@IVA", Convert.ToDouble(item.Cells("IVA").Value.ToString()))
+                cmd.Parameters.AddWithValue("@Total", Convert.ToDouble(item.Cells("Total").Value.ToString()))
                 cmd.Parameters.AddWithValue("@IdPaciente", TxtIdPaciente.Text.ToString())
 
 
@@ -298,7 +322,7 @@ Public Class FrmFactura
                 Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
 
                 If rowsAffected > 0 Then
-                    MessageBox.Show("El registro se guardó correctamente")
+                    ClearForm()
                 Else
                     MessageBox.Show("El registro no se pudo guardar correctamente, algo falló")
                 End If
@@ -315,17 +339,17 @@ Public Class FrmFactura
     End Sub
 
     Private Sub TxtCantidad_TextChanged(sender As Object, e As EventArgs) Handles TxtCantidad.TextChanged
-        If TxtPrecio.Text.Trim.Length <> 0 Then
-            TxtSubTotal.Text = (Convert.ToDouble(TxtPrecio.Text) * Convert.ToDouble(TxtCantidad.Text))
+        If TxtPrecio.Text.Trim().Length <> 0 And Regex.IsMatch(TxtCantidad.Text, "^[0-9,$]*$") And TxtCantidad.Text.Trim().Length <> 0 Then
+            TxtSubTotal.Text = (Convert.ToDouble(TxtPrecio.Text.Trim()) * Convert.ToDouble(TxtCantidad.Text.Trim())).ToString()
             calculateTotal()
         End If
     End Sub
 
     Private Sub calculateTotal()
         If Validator() Then
-            Dim IVA As Double = Convert.ToDouble(TxtIVA.Text / 100)
-            Dim discount As Double = Convert.ToDouble(TxtDescuento.Text / 100)
-            Dim subTotal As Double = Convert.ToDouble(TxtSubTotal.Text)
+            Dim discount As Double = Convert.ToDouble(TxtDescuento.Text) / 100
+            Dim subTotal As Double = Convert.ToDouble(TxtSubTotal.Text.Trim())
+            Dim IVA As Double = Convert.ToDouble(TxtIVA.Text / 100) * subTotal
 
             TxtTotal.Text = (subTotal + IVA) - (subTotal * discount)
 
@@ -337,6 +361,16 @@ Public Class FrmFactura
     End Sub
 
     Private Sub TxtIVA_TextChanged(sender As Object, e As EventArgs) Handles TxtIVA.TextChanged
-        calculateTotal()
+        If Regex.IsMatch(TxtIVA.Text, "^[0-9,$]*$") And TxtIVA.Text.Trim.Length <> 0 Then
+            calculateTotal()
+        End If
     End Sub
+
+    Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
+        If DgvDetalleFactura.Rows.Count > 0 Then
+            DgvDetalleFactura.Rows.Remove(DgvDetalleFactura.Rows(DgvDetalleFactura.Rows.Count - 1))
+        End If
+    End Sub
+
+
 End Class

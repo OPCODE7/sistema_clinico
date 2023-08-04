@@ -206,10 +206,11 @@
     Private Sub ManualUsuario_Click(sender As Object, e As EventArgs) Handles ManualUsuario.Click
         Try
             ' Ruta del archivo del manual de usuario
-            Dim rutaManual As String = "C:\Users\DELL\Downloads\ManualdeUsuario_SistemaClinico.pdf" ' Cambia la ruta a la ubicación real del archivo
-
+            Dim pathApp As String = Application.StartupPath.ToString()
+            Dim pathFile As String = pathApp.Substring(0, pathApp.Length - 9) + "ManualdeUsuario_SistemaClinico.pdf"
+            MessageBox.Show(pathFile)
             ' Abrir el manual de usuario utilizando el programa predeterminado
-            Process.Start(rutaManual)
+            Process.Start(pathFile)
         Catch ex As Exception
             MessageBox.Show("Error al abrir el manual de usuario: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

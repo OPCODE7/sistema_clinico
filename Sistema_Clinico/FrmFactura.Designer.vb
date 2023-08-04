@@ -42,10 +42,6 @@ Partial Class FrmFactura
         Me.TxtIdPaciente = New System.Windows.Forms.TextBox()
         Me.TxtApellidoPa = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TxtDevolucion = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.TxtEfectivo = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.TxtTotal = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtDescuento = New System.Windows.Forms.TextBox()
@@ -53,6 +49,11 @@ Partial Class FrmFactura
         Me.TxtSubTotal = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.DgvDetalleFactura = New System.Windows.Forms.DataGridView()
+        Me.IdPaciente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Medicamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IVA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TxtCantidad = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TxtPrecio = New System.Windows.Forms.TextBox()
@@ -64,11 +65,6 @@ Partial Class FrmFactura
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtId = New System.Windows.Forms.TextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.IdPaciente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Medicamento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IVA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PanelFactura.SuspendLayout()
         Me.PanelTexto.SuspendLayout()
         Me.PanelConte.SuspendLayout()
@@ -115,6 +111,7 @@ Partial Class FrmFactura
         'PanelConte
         '
         Me.PanelConte.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.PanelConte.AutoScroll = True
         Me.PanelConte.BackColor = System.Drawing.Color.Transparent
         Me.PanelConte.Controls.Add(Me.PanelMante)
         Me.PanelConte.Location = New System.Drawing.Point(0, 56)
@@ -129,7 +126,7 @@ Partial Class FrmFactura
         Me.PanelMante.Controls.Add(Me.GroupFactura)
         Me.PanelMante.Location = New System.Drawing.Point(0, 0)
         Me.PanelMante.Name = "PanelMante"
-        Me.PanelMante.Size = New System.Drawing.Size(871, 676)
+        Me.PanelMante.Size = New System.Drawing.Size(871, 664)
         Me.PanelMante.TabIndex = 0
         '
         'GroupFactura
@@ -141,10 +138,6 @@ Partial Class FrmFactura
         Me.GroupFactura.Controls.Add(Me.TxtIVA)
         Me.GroupFactura.Controls.Add(Me.Label3)
         Me.GroupFactura.Controls.Add(Me.GroupPaciente)
-        Me.GroupFactura.Controls.Add(Me.TxtDevolucion)
-        Me.GroupFactura.Controls.Add(Me.Label16)
-        Me.GroupFactura.Controls.Add(Me.TxtEfectivo)
-        Me.GroupFactura.Controls.Add(Me.Label6)
         Me.GroupFactura.Controls.Add(Me.TxtTotal)
         Me.GroupFactura.Controls.Add(Me.Label5)
         Me.GroupFactura.Controls.Add(Me.TxtDescuento)
@@ -164,7 +157,7 @@ Partial Class FrmFactura
         Me.GroupFactura.Controls.Add(Me.TxtId)
         Me.GroupFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupFactura.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.GroupFactura.Location = New System.Drawing.Point(25, 19)
+        Me.GroupFactura.Location = New System.Drawing.Point(25, 13)
         Me.GroupFactura.Name = "GroupFactura"
         Me.GroupFactura.Size = New System.Drawing.Size(820, 642)
         Me.GroupFactura.TabIndex = 31
@@ -185,7 +178,7 @@ Partial Class FrmFactura
         Me.BtnFinalizar.BackColor = System.Drawing.Color.SteelBlue
         Me.BtnFinalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnFinalizar.ForeColor = System.Drawing.SystemColors.Control
-        Me.BtnFinalizar.Location = New System.Drawing.Point(623, 575)
+        Me.BtnFinalizar.Location = New System.Drawing.Point(623, 504)
         Me.BtnFinalizar.Name = "BtnFinalizar"
         Me.BtnFinalizar.Size = New System.Drawing.Size(116, 44)
         Me.BtnFinalizar.TabIndex = 131
@@ -298,48 +291,6 @@ Partial Class FrmFactura
         Me.Label9.TabIndex = 112
         Me.Label9.Text = "Aplicar descuento"
         '
-        'TxtDevolucion
-        '
-        Me.TxtDevolucion.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.TxtDevolucion.Location = New System.Drawing.Point(706, 528)
-        Me.TxtDevolucion.Name = "TxtDevolucion"
-        Me.TxtDevolucion.ReadOnly = True
-        Me.TxtDevolucion.Size = New System.Drawing.Size(79, 26)
-        Me.TxtDevolucion.TabIndex = 124
-        '
-        'Label16
-        '
-        Me.Label16.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.SteelBlue
-        Me.Label16.Location = New System.Drawing.Point(703, 500)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(82, 18)
-        Me.Label16.TabIndex = 123
-        Me.Label16.Text = "Devolución"
-        '
-        'TxtEfectivo
-        '
-        Me.TxtEfectivo.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.TxtEfectivo.Location = New System.Drawing.Point(623, 528)
-        Me.TxtEfectivo.Name = "TxtEfectivo"
-        Me.TxtEfectivo.ReadOnly = True
-        Me.TxtEfectivo.Size = New System.Drawing.Size(77, 26)
-        Me.TxtEfectivo.TabIndex = 122
-        '
-        'Label6
-        '
-        Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.SteelBlue
-        Me.Label6.Location = New System.Drawing.Point(620, 500)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(61, 18)
-        Me.Label6.TabIndex = 121
-        Me.Label6.Text = "Efectivo"
-        '
         'TxtTotal
         '
         Me.TxtTotal.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -416,6 +367,40 @@ Partial Class FrmFactura
         Me.DgvDetalleFactura.ReadOnly = True
         Me.DgvDetalleFactura.Size = New System.Drawing.Size(574, 299)
         Me.DgvDetalleFactura.TabIndex = 114
+        '
+        'IdPaciente
+        '
+        Me.IdPaciente.HeaderText = "IdPaciente"
+        Me.IdPaciente.Name = "IdPaciente"
+        Me.IdPaciente.ReadOnly = True
+        '
+        'Codigo
+        '
+        Me.Codigo.HeaderText = "Codigo"
+        Me.Codigo.Name = "Codigo"
+        Me.Codigo.ReadOnly = True
+        Me.Codigo.Width = 80
+        '
+        'Medicamento
+        '
+        Me.Medicamento.HeaderText = "Medicamento"
+        Me.Medicamento.Name = "Medicamento"
+        Me.Medicamento.ReadOnly = True
+        Me.Medicamento.Width = 150
+        '
+        'IVA
+        '
+        Me.IVA.HeaderText = "IVA"
+        Me.IVA.Name = "IVA"
+        Me.IVA.ReadOnly = True
+        Me.IVA.Width = 98
+        '
+        'Total
+        '
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 98
         '
         'TxtCantidad
         '
@@ -526,40 +511,6 @@ Partial Class FrmFactura
         Me.TxtId.Size = New System.Drawing.Size(134, 26)
         Me.TxtId.TabIndex = 83
         '
-        'IdPaciente
-        '
-        Me.IdPaciente.HeaderText = "IdPaciente"
-        Me.IdPaciente.Name = "IdPaciente"
-        Me.IdPaciente.ReadOnly = True
-        '
-        'Codigo
-        '
-        Me.Codigo.HeaderText = "Codigo"
-        Me.Codigo.Name = "Codigo"
-        Me.Codigo.ReadOnly = True
-        Me.Codigo.Width = 80
-        '
-        'Medicamento
-        '
-        Me.Medicamento.HeaderText = "Medicamento"
-        Me.Medicamento.Name = "Medicamento"
-        Me.Medicamento.ReadOnly = True
-        Me.Medicamento.Width = 150
-        '
-        'IVA
-        '
-        Me.IVA.HeaderText = "IVA"
-        Me.IVA.Name = "IVA"
-        Me.IVA.ReadOnly = True
-        Me.IVA.Width = 98
-        '
-        'Total
-        '
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 98
-        '
         'FrmFactura
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -604,10 +555,6 @@ Partial Class FrmFactura
     Friend WithEvents TxtPaciente As TextBox
     Friend WithEvents TxtIdPaciente As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents TxtDevolucion As TextBox
-    Friend WithEvents Label16 As Label
-    Friend WithEvents TxtEfectivo As TextBox
-    Friend WithEvents Label6 As Label
     Friend WithEvents TxtTotal As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents TxtDescuento As TextBox
