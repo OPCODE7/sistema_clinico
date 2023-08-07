@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class FrmServicioClinico
-    Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+    Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
     Dim con As New SqlClient.SqlConnection(My.Settings.SistemaClinico)
     Dim reader As SqlDataReader
     Dim recordset As DataTable
@@ -49,7 +49,7 @@ Public Class FrmServicioClinico
 
     Private Function ObtenerSiguienteID() As Integer
         Dim siguienteID As Integer = 1
-        Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+        Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
 
         Using connection As New SqlConnection(connectionString)
             connection.Open()
@@ -227,7 +227,7 @@ Public Class FrmServicioClinico
 
         Dim cmd As New SqlClient.SqlCommand("DELETE 
                                              FROM ServicioClinico
-                                             WHERE IdServicioClinico = @IdServicioClinico", con)
+                                             WHERE IdServicioClinico = '" + TxtId.Text.ToString() + "'", con)
 
         Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
 

@@ -40,7 +40,6 @@ Partial Class FrmProveedores
         Me.Label13 = New System.Windows.Forms.Label()
         Me.CheckActivo = New System.Windows.Forms.CheckBox()
         Me.DateFechaRegistro = New System.Windows.Forms.DateTimePicker()
-        Me.TxtProveedor = New System.Windows.Forms.TextBox()
         Me.TxtDirección = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtId = New System.Windows.Forms.TextBox()
@@ -54,6 +53,7 @@ Partial Class FrmProveedores
         Me.Button1 = New System.Windows.Forms.Button()
         Me.BtnActualizar = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.TxtProveedor = New System.Windows.Forms.TextBox()
         Me.PanelProveedores.SuspendLayout()
         Me.GroupBuscar.SuspendLayout()
         CType(Me.ImagenBuscar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +110,7 @@ Partial Class FrmProveedores
         '
         Me.GroupProveedores.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupProveedores.BackColor = System.Drawing.Color.Transparent
+        Me.GroupProveedores.Controls.Add(Me.TxtProveedor)
         Me.GroupProveedores.Controls.Add(Me.CbmCategoria)
         Me.GroupProveedores.Controls.Add(Me.Label6)
         Me.GroupProveedores.Controls.Add(Me.TxtCorreo)
@@ -122,7 +123,6 @@ Partial Class FrmProveedores
         Me.GroupProveedores.Controls.Add(Me.Label13)
         Me.GroupProveedores.Controls.Add(Me.CheckActivo)
         Me.GroupProveedores.Controls.Add(Me.DateFechaRegistro)
-        Me.GroupProveedores.Controls.Add(Me.TxtProveedor)
         Me.GroupProveedores.Controls.Add(Me.TxtDirección)
         Me.GroupProveedores.Controls.Add(Me.Label1)
         Me.GroupProveedores.Controls.Add(Me.TxtId)
@@ -268,14 +268,6 @@ Partial Class FrmProveedores
         Me.DateFechaRegistro.Size = New System.Drawing.Size(200, 26)
         Me.DateFechaRegistro.TabIndex = 35
         '
-        'TxtProveedor
-        '
-        Me.TxtProveedor.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.TxtProveedor.Location = New System.Drawing.Point(109, 72)
-        Me.TxtProveedor.Name = "TxtProveedor"
-        Me.TxtProveedor.Size = New System.Drawing.Size(332, 26)
-        Me.TxtProveedor.TabIndex = 28
-        '
         'TxtDirección
         '
         Me.TxtDirección.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -419,6 +411,13 @@ Partial Class FrmProveedores
         Me.Button2.Text = "Actualizar"
         Me.Button2.UseVisualStyleBackColor = False
         '
+        'TxtProveedor
+        '
+        Me.TxtProveedor.Location = New System.Drawing.Point(109, 72)
+        Me.TxtProveedor.Name = "TxtProveedor"
+        Me.TxtProveedor.Size = New System.Drawing.Size(332, 26)
+        Me.TxtProveedor.TabIndex = 57
+        '
         'FrmProveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -454,7 +453,6 @@ Partial Class FrmProveedores
     Friend WithEvents Label13 As Label
     Friend WithEvents CheckActivo As CheckBox
     Friend WithEvents DateFechaRegistro As DateTimePicker
-    Friend WithEvents TxtProveedor As TextBox
     Friend WithEvents TxtDirección As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TxtId As TextBox
@@ -470,4 +468,5 @@ Partial Class FrmProveedores
     Friend WithEvents Button2 As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents CbmCategoria As ComboBox
+    Friend WithEvents TxtProveedor As TextBox
 End Class

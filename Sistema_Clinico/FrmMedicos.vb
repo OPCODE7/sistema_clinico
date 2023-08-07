@@ -269,12 +269,12 @@ Public Class FrmMedicos
 
             Dim genero As String
             If CheckMasculino.Checked Then
-                genero = CheckMasculino.Text
+                genero = 2
             ElseIf CheckFemenino.Checked Then
-                genero = CheckFemenino.Text
+                genero = 1
             End If
 
-            cmd.Parameters.AddWithValue("@Genero", genero)
+            cmd.Parameters.AddWithValue("@IdGenero", genero)
 
             Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
 
@@ -315,7 +315,7 @@ Public Class FrmMedicos
                                                  Edad = @Edad, Telefono = @Telefono, Direccion = @Direccion, Correo = @Correo, 
                                                  IdEstadoCivil = @IdEstadoCivil, IdEspecialidad = @IdEspecialidad, IdTurno = @IdTurno, 
                                                  FechaNacimiento = @FechaNacimiento, FechaModificacion = GETDATE(), Estado = @Estado, 
-                                                 Genero = @Genero, Identidad = @Identidad
+                                                 IdGenero = @Genero, Identidad = @Identidad
                                                  WHERE IdMedico = @IdMedico", con)
 
             cmd.Parameters.AddWithValue("@IdMedico", TxtId.Text)
@@ -335,9 +335,9 @@ Public Class FrmMedicos
 
             Dim genero As String
             If CheckMasculino.Checked Then
-                genero = CheckMasculino.Text
+                genero = 2
             ElseIf CheckFemenino.Checked Then
-                genero = CheckFemenino.Text
+                genero = 1
             End If
 
             cmd.Parameters.AddWithValue("@Genero", genero)
@@ -367,13 +367,8 @@ Public Class FrmMedicos
         con.Open()
 
         Dim reader As SqlClient.SqlDataReader
-        Dim cmd As New SqlClient.SqlCommand("Select A.IdMedico, A.NombreMedico, A.ApellidoMedico, A.Edad, A.Telefono,	
-	                                         A.Direccion, A.Correo, A.IdEstadoCivil, A.IdEspecialidad, A.IdTurno, A.FechaNacimiento, 
-                                             A.FechaRegistro, A.Estado, A.Genero, A.Identidad, B.Descripcion, C.Especialidad, D.Turno
-                                             From Medico A INNER JOIN EstadoCivil B ON(A.IdEstadoCivil = B.IdEstadoCivil
-                                                                      Especialidad C ON(A.IdEspecialidad = C.IdEspecialidad
-                                                                      Turnos D ON(A.IdTurno = D.IdTurno) 
-                                             WHERE NombreMedico = '" & TxtBuscar.Text & "'", con)
+        Dim cmd As New SqlClient.SqlCommand("Select A.IdMedico, A.NombreMedico, A.ApellidoMedico, A.Edad, A.Telefono,A.Direccion, A.Correo, A.IdEstadoCivil, A.IdEspecialidad, A.IdTurno, A.FechaNacimiento,A.FechaRegistro, A.Estado, E.Descripcion As Genero, A.Identidad, B.Descripcion, C.Especialidad, D.Turno From Medico A INNER JOIN EstadoCivil B ON(A.IdEstadoCivil = B.IdEstadoCivil) INNER JOIN   Especialidad C ON(A.IdEspecialidad = C.IdEspecialidad) INNER JOIN Turnos D ON(A.IdTurno = D.IdTurno) INNER JOIN Genero E ON (A.IdGenero=E.IdGenero)
+         WHERE NombreMedico = '" & TxtBuscar.Text & "'", con)
 
         reader = cmd.ExecuteReader
 
@@ -387,7 +382,7 @@ Public Class FrmMedicos
             TxtId.Text = reader("IdMedico").ToString()
             TxtNombre.Text = reader("NombreMedico").ToString()
             TxtApellido.Text = reader("ApellidoMedico").ToString()
-            TxtEdad.Text = reader("Identidad").ToString()
+            TxtIdentidad.Text = reader("Identidad").ToString()
             TxtEdad.Text = reader("Edad").ToString()
             TxtTelefono.Text = reader("Telefono").ToString()
             TxtDireccion.Text = reader("Direccion").ToString()

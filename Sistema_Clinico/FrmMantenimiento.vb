@@ -211,7 +211,7 @@
 
     End Sub
 
-    Private Sub BtnUsuarios_Click(sender As Object, e As EventArgs) Handles BtnUsuarios.Click
+    Private Sub BtnUsuarios_Click(sender As Object, e As EventArgs) 
         If frmUsuarios Is Nothing Then
             frmUsuarios = New FrmUsuarios()
         End If

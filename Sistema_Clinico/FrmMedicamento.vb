@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class FrmMedicamento
-    Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+    Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
     Dim con As New SqlClient.SqlConnection(My.Settings.SistemaClinico)
     Dim reader As SqlDataReader
     Dim recordset As DataTable
@@ -51,7 +51,7 @@ Public Class FrmMedicamento
         recordset = New DataTable()
 
         Try
-            cmd = New SqlCommand("SELECT DISTINCT IdProveedor, NombreProveedor FROM Proveedor WHERE Categoria = 'Farmacéutica'", con)
+            cmd = New SqlCommand("SELECT DISTINCT IdProveedor, NombreProveedor FROM Proveedor WHERE Categoria = 'Farmaceutica'", con)
             con.Open()
 
             reader = cmd.ExecuteReader()
@@ -103,7 +103,7 @@ Public Class FrmMedicamento
 
     Private Function ObtenerSiguienteID() As Integer
         Dim siguienteID As Integer = 1
-        Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+        Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
 
         Using connection As New SqlConnection(connectionString)
             connection.Open()
@@ -124,6 +124,7 @@ Public Class FrmMedicamento
         TxtDescripcion.Multiline = True
         TxtDescripcion.ScrollBars = ScrollBars.Vertical
         TxtDescripcion.Height = 100
+        FillProveedor()
     End Sub
 
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click

@@ -43,11 +43,9 @@ Partial Class FrmMantenimiento
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox12 = New System.Windows.Forms.PictureBox()
         Me.BtnEquipoMedico = New System.Windows.Forms.Button()
-        Me.BtnUsuarios = New System.Windows.Forms.Button()
         Me.BtnEmpleados = New System.Windows.Forms.Button()
         Me.BtnTipoExamen = New System.Windows.Forms.Button()
         Me.PictureBox11 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PanelMantenimiento = New System.Windows.Forms.Panel()
         Me.PanelTexto = New System.Windows.Forms.Panel()
         Me.BtnSalir = New System.Windows.Forms.Button()
@@ -65,7 +63,6 @@ Partial Class FrmMantenimiento
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMantenimiento.SuspendLayout()
         Me.PanelTexto.SuspendLayout()
         Me.PanelConte.SuspendLayout()
@@ -94,11 +91,9 @@ Partial Class FrmMantenimiento
         Me.PanelMante.Controls.Add(Me.PictureBox2)
         Me.PanelMante.Controls.Add(Me.PictureBox12)
         Me.PanelMante.Controls.Add(Me.BtnEquipoMedico)
-        Me.PanelMante.Controls.Add(Me.BtnUsuarios)
         Me.PanelMante.Controls.Add(Me.BtnEmpleados)
         Me.PanelMante.Controls.Add(Me.BtnTipoExamen)
         Me.PanelMante.Controls.Add(Me.PictureBox11)
-        Me.PanelMante.Controls.Add(Me.PictureBox4)
         Me.PanelMante.Location = New System.Drawing.Point(0, 0)
         Me.PanelMante.Name = "PanelMante"
         Me.PanelMante.Size = New System.Drawing.Size(871, 676)
@@ -184,7 +179,7 @@ Partial Class FrmMantenimiento
         Me.BtnRolEmpleado.BackColor = System.Drawing.Color.White
         Me.BtnRolEmpleado.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnRolEmpleado.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnRolEmpleado.Location = New System.Drawing.Point(675, 167)
+        Me.BtnRolEmpleado.Location = New System.Drawing.Point(615, 168)
         Me.BtnRolEmpleado.Name = "BtnRolEmpleado"
         Me.BtnRolEmpleado.Size = New System.Drawing.Size(121, 30)
         Me.BtnRolEmpleado.TabIndex = 9
@@ -209,7 +204,7 @@ Partial Class FrmMantenimiento
         Me.PictureBox8.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBox8.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
-        Me.PictureBox8.Location = New System.Drawing.Point(676, 24)
+        Me.PictureBox8.Location = New System.Drawing.Point(615, 23)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(121, 138)
         Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -247,7 +242,7 @@ Partial Class FrmMantenimiento
         Me.BtnEspecialidad.BackColor = System.Drawing.Color.White
         Me.BtnEspecialidad.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnEspecialidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEspecialidad.Location = New System.Drawing.Point(523, 167)
+        Me.BtnEspecialidad.Location = New System.Drawing.Point(409, 168)
         Me.BtnEspecialidad.Name = "BtnEspecialidad"
         Me.BtnEspecialidad.Size = New System.Drawing.Size(121, 49)
         Me.BtnEspecialidad.TabIndex = 7
@@ -297,7 +292,7 @@ Partial Class FrmMantenimiento
         Me.PictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(523, 23)
+        Me.PictureBox3.Location = New System.Drawing.Point(408, 23)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(121, 138)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -309,7 +304,7 @@ Partial Class FrmMantenimiento
         Me.PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(219, 23)
+        Me.PictureBox2.Location = New System.Drawing.Point(244, 24)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(121, 138)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -341,26 +336,13 @@ Partial Class FrmMantenimiento
         Me.BtnEquipoMedico.Text = "Equipo medico"
         Me.BtnEquipoMedico.UseVisualStyleBackColor = False
         '
-        'BtnUsuarios
-        '
-        Me.BtnUsuarios.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.BtnUsuarios.BackColor = System.Drawing.Color.White
-        Me.BtnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnUsuarios.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnUsuarios.Location = New System.Drawing.Point(370, 167)
-        Me.BtnUsuarios.Name = "BtnUsuarios"
-        Me.BtnUsuarios.Size = New System.Drawing.Size(121, 30)
-        Me.BtnUsuarios.TabIndex = 5
-        Me.BtnUsuarios.Text = "Usuarios"
-        Me.BtnUsuarios.UseVisualStyleBackColor = False
-        '
         'BtnEmpleados
         '
         Me.BtnEmpleados.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.BtnEmpleados.BackColor = System.Drawing.Color.White
         Me.BtnEmpleados.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnEmpleados.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnEmpleados.Location = New System.Drawing.Point(219, 167)
+        Me.BtnEmpleados.Location = New System.Drawing.Point(244, 168)
         Me.BtnEmpleados.Name = "BtnEmpleados"
         Me.BtnEmpleados.Size = New System.Drawing.Size(121, 30)
         Me.BtnEmpleados.TabIndex = 3
@@ -392,25 +374,13 @@ Partial Class FrmMantenimiento
         Me.PictureBox11.TabIndex = 18
         Me.PictureBox11.TabStop = False
         '
-        'PictureBox4
-        '
-        Me.PictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(371, 24)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(121, 138)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox4.TabIndex = 4
-        Me.PictureBox4.TabStop = False
-        '
         'PanelMantenimiento
         '
         Me.PanelMantenimiento.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PanelMantenimiento.BackColor = System.Drawing.Color.White
         Me.PanelMantenimiento.Controls.Add(Me.PanelTexto)
         Me.PanelMantenimiento.Controls.Add(Me.PanelConte)
-        Me.PanelMantenimiento.Location = New System.Drawing.Point(100, 12)
+        Me.PanelMantenimiento.Location = New System.Drawing.Point(100, 3)
         Me.PanelMantenimiento.Name = "PanelMantenimiento"
         Me.PanelMantenimiento.Size = New System.Drawing.Size(871, 732)
         Me.PanelMantenimiento.TabIndex = 28
@@ -463,7 +433,7 @@ Partial Class FrmMantenimiento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1009, 766)
+        Me.ClientSize = New System.Drawing.Size(1009, 749)
         Me.Controls.Add(Me.PanelMantenimiento)
         Me.Name = "FrmMantenimiento"
         Me.Text = " "
@@ -479,7 +449,6 @@ Partial Class FrmMantenimiento
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMantenimiento.ResumeLayout(False)
         Me.PanelTexto.ResumeLayout(False)
         Me.PanelTexto.PerformLayout()
@@ -508,11 +477,9 @@ Partial Class FrmMantenimiento
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox12 As PictureBox
     Friend WithEvents BtnEquipoMedico As Button
-    Friend WithEvents BtnUsuarios As Button
     Friend WithEvents BtnEmpleados As Button
     Friend WithEvents BtnTipoExamen As Button
     Friend WithEvents PictureBox11 As PictureBox
-    Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents PanelMantenimiento As Panel
     Friend WithEvents PanelTexto As Panel
     Friend WithEvents LblTexto As Label

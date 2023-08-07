@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Public Class FrmEmpleados
 
-    Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+    Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
     Dim con As New SqlClient.SqlConnection(My.Settings.SistemaClinico)
     Dim reader As SqlDataReader
     Dim recordset As DataTable
@@ -298,7 +298,7 @@ Public Class FrmEmpleados
         If Validator() Then
             con.Open()
 
-            Dim cmd As New SqlClient.SqlCommand("UPDATE Medico
+            Dim cmd As New SqlClient.SqlCommand("UPDATE Empleado
 	                                             SET IdEmpleado = @IdEmpleado, NombreEmpleado = @NombreEmpleado, ApellidoEmpleado = @ApellidoEmpleado, 
                                                  Edad = @Edad, Telefono = @Telefono, Direccion = @Direccion, Correo = @Correo, 
                                                  IdEstadoCivil = @IdEstadoCivil, IdRol = @IdRol, IdTurno = @IdTurno, 
@@ -357,11 +357,13 @@ Public Class FrmEmpleados
 
         Dim reader As SqlClient.SqlDataReader
         Dim cmd As New SqlClient.SqlCommand("Select A.IdEmpleado, A.NombreEmpleado, A.ApellidoEmpleado, A.Edad, A.Telefono,	
-	                                         A.Direccion, A.Correo, A.IdEstadoCivil, A.IdRol, A.IdTurno, A.FechaNacimiento, 
-                                             A.FechaRegistro, A.Estado, A.Genero, A.Identidad, B.Descripcion, C.Rol, D.Turno
-                                             From Empleado A INNER JOIN EstadoCivil B ON(A.IdEstadoCivil = B.IdEstadoCivil
-                                                                      RolEmpleado C ON(A.IdRol = C.IdRol
-                                                                      Turnos D ON(A.IdTurno = D.IdTurno) 
+A.Direccion, A.Correo, A.IdEstadoCivil, A.IdRol, A.IdTurno, A.FechaNacimiento, 
+  A.FechaRegistro, A.Estado, A.Genero, A.Identidad, B.Descripcion, C.Rol, D.Turno
+From Empleado A INNER JOIN EstadoCivil B ON(A.IdEstadoCivil = B.IdEstadoCivil)
+INNER JOIN
+   RolEmpleado C ON(A.IdRol = C.IdRol)
+   INNER JOIN
+ Turnos D ON(A.IdTurno = D.IdTurno)
                                              WHERE NombreEmpleado = '" & TxtBuscar.Text & "'", con)
 
         reader = cmd.ExecuteReader

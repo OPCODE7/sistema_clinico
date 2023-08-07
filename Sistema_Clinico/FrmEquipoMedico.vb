@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Public Class FrmEquipoMedico
-    Dim connectionString As String = "Data Source=DESKTOP-FUNN0TB\MSSQLSERVER2019;Initial Catalog=Sistema_Clinico;User ID=sa;Password=12345"
+    Dim connectionString As String = "Data Source=OPCODE;Initial Catalog=Sistema_Clinico;User ID=opcode;Password=opcode7"
     Dim con As New SqlClient.SqlConnection(My.Settings.SistemaClinico)
     Dim reader As SqlDataReader
     Dim recordset As DataTable
@@ -181,7 +181,7 @@ Public Class FrmEquipoMedico
         con.Open()
 
         Dim cmd As New SqlClient.SqlCommand("Select A.NumeroInventario, A.NombreEquipo, A.Marca, 
-                                             A.CostoEquipo, A.IdProveedor, A.FechaRegistro, A.Estado, B.Proveedor
+                                             A.CostoEquipo, A.IdProveedor, A.FechaRegistro, A.Estado,A.FechaDescartado,A.FechaRegistro, B.NombreProveedor
                                              From EquipoMedico A INNER JOIN Proveedor B ON(A.IdProveedor = B.IdProveedor) 
                                              WHERE NombreEquipo = '" & TxtBuscar.Text & "'", con)
 
@@ -209,7 +209,7 @@ Public Class FrmEquipoMedico
 
             Dim estado As Integer = Convert.ToInt32(reader("Estado"))
             CheckActivo.Checked = (estado = 1)
-            CbmProveedor.Text = reader("Proveedor").ToString()
+            CbmProveedor.Text = reader("NombreProveedor").ToString()
 
         Else
             MessageBox.Show("No existe un registro con esos datos")
